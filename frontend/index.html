@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocChat — RAG Document Assistant</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="shell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-name">DocChat</span>
+      </div>
+
+      <!-- Upload Section -->
+      <section class="panel" id="upload-panel">
+        <h2 class="panel-title">Document</h2>
+
+        <div class="drop-zone" id="drop-zone">
+          <input type="file" id="file-input" accept=".pdf,.txt" hidden />
+          <div class="drop-icon">⬡</div>
+          <p class="drop-text">Drop PDF or TXT here</p>
+          <p class="drop-sub">or <button class="link-btn" id="browse-btn">browse files</button></p>
+        </div>
+
+        <div class="doc-status" id="doc-status" style="display:none">
+          <span class="status-dot active"></span>
+          <span class="status-label" id="doc-name">No document</span>
+          <span class="status-chunks" id="doc-chunks"></span>
+        </div>
+
+        <div class="upload-progress" id="upload-progress" style="display:none">
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+          <span class="progress-label" id="progress-label">Processing…</span>
+        </div>
+      </section>
+
+      <!-- Provider Section -->
+      <section class="panel" id="provider-panel">
+        <h2 class="panel-title">Provider</h2>
+
+        <div class="field-group">
+          <label class="field-label">LLM Provider</label>
+          <select class="select" id="provider-select">
+            <option value="">Loading…</option>
+          </select>
+        </div>
+
+        <div class="field-group" id="model-field" style="display:none">
+          <label class="field-label">Model</label>
+          <select class="select" id="model-select">
+            <option value="">Select model…</option>
+          </select>
+        </div>
+
+        <div class="provider-badge" id="provider-badge" style="display:none">
+          <span class="badge-dot"></span>
+          <span id="badge-text">gemini-1.5-flash</span>
+        </div>
+      </section>
+
+      <div class="sidebar-footer">
+        <span class="footer-note">Developed by Sagar Pimpale</span>
+      </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="main">
+
+      <div class="chat-header">
+        <h1 class="chat-title">Ask your document</h1>
+        <p class="chat-subtitle" id="chat-subtitle">Upload a document and select a provider to begin</p>
+      </div>
+
+      <div class="messages" id="messages">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">◈</div>
+          <p>Your conversation will appear here</p>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <div class="input-row">
+          <textarea
+            id="question-input"
+            class="question-input"
+            placeholder="Ask anything about your document…"
+            rows="1"
+            disabled
+          ></textarea>
+          <button class="send-btn" id="send-btn" disabled>
+            <span class="send-icon">→</span>
+          </button>
+        </div>
+        <p class="input-hint" id="input-hint">Upload a document to start chatting</p>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
