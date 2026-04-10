@@ -163,7 +163,7 @@ rag-chat/
 | Provider | Type | Model | Notes |
 |----------|------|-------|-------|
 | Ollama | Local | Any pulled model | Fully offline, model list auto-detected |
-| Gemini | Cloud | gemini-1.5-flash | Requires API key, free tier available |
+| Gemini | Cloud | gemini-2.5-flash | Requires API key, free tier available |
 
 **Embeddings** always use Ollama locally (prefers `nomic-embed-text`, falls back to any available model).
 
